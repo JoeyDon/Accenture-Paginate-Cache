@@ -4,33 +4,25 @@ import { connect } from "react-redux";
 
 import { requestApiData } from "./actions";
 
+import Cards from "./components/Cards"
+import Card from "./components/Card"
 class Home extends React.Component {
   componentDidMount() {
     console.log('Process - componentDidMount')
     this.props.requestApiData();
   }
 
-  person = (x, i) =>
-    <div key={x.id.value}>
-      <h1>
-        {x.gender}
-      </h1>
-      <h1>
-        {x.name.first}
-      </h1>
-      <h1>
-        {x.name.last}
-      </h1>
-      <img src={x.picture.medium} />
-    </div>;
-
   render() {
-    const { results = [] } = this.props.data;
-    return results.length
+    const { data } = this.props;
+    console.log(this.props.data)
+    console.log(data)
+    return data.length
       ? <h1>
-          {results.map(this.person)}
+         s
         </h1>
-      : <h1>loading...</h1>;
+      : <h1>loading...
+        
+      </h1>;
   }
 }
 
