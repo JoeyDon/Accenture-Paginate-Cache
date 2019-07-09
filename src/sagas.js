@@ -26,7 +26,6 @@ function* getApiData() {
     //console.log("get api in saga triggered");
     // const data = yield call(fetchData, 60);
     const state = yield select();
-    console.log("Saga - before fire reducer func");
     const countsToCall =
       state.cacheReducer === initialCachePages
         ? initialCachePages * pageSize
@@ -41,20 +40,28 @@ function* getApiData() {
 }
 
 function* OnNextPageAsync() {
-  const stateAfter = yield select();
+  const state = yield select();
   console.log("Saga - after fire reducer func");
-  console.log(stateAfter);
-  const { paginationReducer, cacheReducer } = stateAfter;
+  console.log(state);
+  const { paginationReducer, cacheReducer } = state;
 
-  if (paginationReducer === cacheReducer) {
+  if (paginationReducer + 1 === cacheReducer) {
     console.log("the end of page cached, pulling more");
 
-    yield put({ type: UPDATE_CACHE_INDEX });
     yield getApiData();
+    yield put({ type: UPDATE_CACHE_INDEX });
     console.log("5 triggered and get api finished");
   }
-
+  // console.log("current index:", paginationReducer);
+  // console.log("current cacheReducer:", cacheReducer);
+  // console.log("fire go next page");
   yield put({ type: GO_NEXT_PAGE });
+
+  const stateAfter = yield select();
+  console.log(
+    "Finished next page, now index is ",
+    stateAfter.paginationReducer
+  );
 }
 
 function* watchAPIRequest() {
