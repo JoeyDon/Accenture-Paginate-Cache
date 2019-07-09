@@ -2,10 +2,12 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { requestApiData } from "./actions";
+import { requestApiData, onNextPage, onPreviousPage, onPushNewIndexToCache } from "./actions";
 
-import Cards from "./components/Cards";
-import Card from "./components/Card";
+import Cards from "./components/cards/Cards";
+import Pagination from "./components/pagination/Pagination"
+import { pageSize } from "./settings/settings"
+
 class Home extends React.Component {
   componentDidMount() {
     console.log("Process - componentDidMount");
@@ -13,17 +15,25 @@ class Home extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
-    console.log(this.props.data);
-    console.log(data);
-    return data.length ? <Cards data={data} /> : <h1>loading...</h1>;
+    const { data, currentPage, onNextPage, onPreviousPage } = this.props;
+    console.log(this.props)
+    return data.length ? <React.Fragment ><Cards data={paginatify(data, currentPage, pageSize)} /> <Pagination currentPage={currentPage} onNextPage={onNextPage} onPreviousPage={onPreviousPage}/> </React.Fragment>: <h1>loading...</h1>;
   }
 }
 
-const mapStateToProps = state => ({ data: state.data });
+
+const paginatify = (items, currentPage, pageSize) =>{
+  let startIndex = (currentPage - 1) * pageSize
+  let lastIndex = currentPage * pageSize 
+  return items.slice(startIndex, lastIndex)
+}
+
+const mapStateToProps = state => { 
+  console.log(state)
+  return { data: state.dataReducer, currentPage: state.paginationReducer, cachePages:state.cacheReducer }};
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestApiData }, dispatch);
+  bindActionCreators({ requestApiData, onNextPage, onPreviousPage, onPushNewIndexToCache}, dispatch);
 
 export default connect(
   mapStateToProps,

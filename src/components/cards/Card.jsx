@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+
 const useStyles = makeStyles({
   card: {
     minWidth: 275
@@ -28,7 +29,7 @@ export default function SimpleCard(props) {
   const bull = <span className={classes.bullet}>•</span>;
 
   const { data } = props;
-  console.log(data);
+
   return (
     <Card className={classes.card}>
       <CardContent>

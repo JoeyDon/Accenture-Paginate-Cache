@@ -1,7 +1,12 @@
 import { combineReducers } from "redux";
 
-import data from "./data";
+import dataReducer from "./dataReducer";
+import paginationReducer from "./paginationReducer";
+import cacheReducer from "./cacheReducer"
+
 
 export default combineReducers({
-  data
+  dataReducer,
+  paginationReducer,
+  cacheReducer
 });
