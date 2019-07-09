@@ -1,11 +1,11 @@
-import { PUSH_CACHE_INDEX} from '../actions'
-import { initialsedCachePages } from '../settings/settings'
+import { UPDATE_CACHE_INDEX } from "../actions";
+import { initialCachePages } from "../settings/settings";
 
-export default (state = initialsedCachePages, { type, newIndexToCache }) => {
+export default (state = initialCachePages, { type, newIndexToCache }) => {
   switch (type) {
-    case PUSH_CACHE_INDEX:
-      console.log(type, newIndexToCache)
-      return [...state, newIndexToCache];
+    case UPDATE_CACHE_INDEX:
+      console.log(newIndexToCache);
+      return newIndexToCache;
     default:
       return state;
   }

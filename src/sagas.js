@@ -1,32 +1,71 @@
-import { call, put, takeEvery, takeLatest, select } from "redux-saga/effects";
-
-import { REQUEST_API_DATA, receiveApiData } from "./actions";
+import {
+  call,
+  put,
+  takeEvery,
+  takeLatest,
+  select,
+  all
+} from "redux-saga/effects";
+import {
+  REQUEST_API_DATA,
+  receiveApiData,
+  REQUEST_NEXT_PAGE,
+  GO_NEXT_PAGE,
+  onReqCountUp,
+  updateNewIndexToCache
+} from "./actions";
+import {
+  pageSize,
+  maxCachePages,
+  initialCachePages
+} from "../src/settings/settings";
 import { fetchData } from "./api";
-import { delay } from "redux-saga";
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* getApiData(action) {
-  const state = yield select();
-
-  console.log(state)
+function* getApiData() {
   try {
-    // do api call
-    console.log('Process - Saga - watchTrigerd - getApi()')
-    const data = yield call(fetchData,60);
+    //console.log("get api in saga triggered");
+    // const data = yield call(fetchData, 60);
+    const state = yield select();
+    console.log("Saga - before fire reducer func");
+    const countsToCall =
+      state.reqCountReducer === 0
+        ? initialCachePages * pageSize
+        : (state.cacheReducer + maxCachePages) * pageSize;
+
+    const data = yield call(fetchData, countsToCall);
+
     yield put(receiveApiData(data));
+    yield put(onReqCountUp());
   } catch (e) {
     console.log(e);
   }
 }
 
-/*
-  Alternatively you may use takeLatest.
+function* OnNextPageAsync() {
+  yield put({ type: GO_NEXT_PAGE });
 
-  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-  dispatched while a fetch is already pending, that pending fetch is cancelled
-  and only the latest one will be run.
-*/
-export default function* mySaga() {
-  console.log('Process - Saga - EntryPoint')
+  const stateAfter = yield select();
+  console.log("Saga - after fire reducer func");
+  console.log(stateAfter);
+  const { paginationReducer, cacheReducer } = stateAfter;
+
+  if (paginationReducer === cacheReducer) {
+    console.log("the end of page cached, pulling more");
+    yield getApiData();
+    console.log("5 triggered and get api finished");
+    yield put(updateNewIndexToCache(paginationReducer + maxCachePages));
+  }
+}
+
+function* watchAPIRequest() {
   yield takeLatest(REQUEST_API_DATA, getApiData);
+}
+
+function* watchOnNextPageAsync() {
+  yield takeLatest(REQUEST_NEXT_PAGE, OnNextPageAsync);
+}
+
+export default function* rootSaga() {
+  yield all([watchAPIRequest(), watchOnNextPageAsync()]);
 }

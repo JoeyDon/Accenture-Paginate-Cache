@@ -1,30 +1,38 @@
 export const REQUEST_API_DATA = "REQUEST_API_DATA";
 export const RECEIVE_API_DATA = "RECEIVE_API_DATA";
-export const NEXT_PAGE = "NEXT_PAGE";
+
+export const REQUEST_NEXT_PAGE = "REQUEST_NEXT_PAGE";
+export const GO_NEXT_PAGE = "GO_NEXT_PAGE";
+
 export const PREVIOUS_PAGE = "PREVIOUS_PAGE";
-export const PUSH_CACHE_INDEX = "PUSH_CACHE_INDEX"
+export const UPDATE_CACHE_INDEX = "UPDATE_CACHE_INDEX";
 
-
+export const REQ_COUNT_UP = "REQ_COUNT_UP";
 
 // export const requestApiData = () => ({ type: REQUEST_API_DATA });
-export const requestApiData = () => { 
-    console.log('Process - Action')
-    return {type: REQUEST_API_DATA}
+export const requestApiData = () => {
+  console.log("Process - Action");
+  return { type: REQUEST_API_DATA };
 };
 
 export const receiveApiData = data => ({ type: RECEIVE_API_DATA, data });
 
-export const onNextPage = (currentPageIndex) => {
-    console.log('nextpage in action')
-    console.log(currentPageIndex)
-    return { type: NEXT_PAGE }
-}
+export const onNextPage = currentPageIndex => {
+  console.log("nextpage in action");
+  console.log(currentPageIndex);
+  return { type: REQUEST_NEXT_PAGE };
+};
 
 export const onPreviousPage = () => {
-    console.log('previous in action')
-    return { type: PREVIOUS_PAGE }
-}
+  console.log("previous in action");
+  return { type: PREVIOUS_PAGE };
+};
 
-export const onPushNewIndexToCache = (index) => {
-    return { type: PUSH_CACHE_INDEX, index }
-}
+export const onReqCountUp = () => {
+  return { type: REQ_COUNT_UP };
+};
+
+export const updateNewIndexToCache = index => {
+  console.log("updateNewIndexToCache ACTION", index);
+  return { type: UPDATE_CACHE_INDEX, index };
+};
