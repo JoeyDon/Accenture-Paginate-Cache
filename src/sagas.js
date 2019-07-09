@@ -11,8 +11,7 @@ import {
   receiveApiData,
   REQUEST_NEXT_PAGE,
   GO_NEXT_PAGE,
-  onReqCountUp,
-  updateNewIndexToCache
+  UPDATE_CACHE_INDEX
 } from "./actions";
 import {
   pageSize,
@@ -29,22 +28,19 @@ function* getApiData() {
     const state = yield select();
     console.log("Saga - before fire reducer func");
     const countsToCall =
-      state.reqCountReducer === 0
+      state.cacheReducer === initialCachePages
         ? initialCachePages * pageSize
         : (state.cacheReducer + maxCachePages) * pageSize;
-
+    console.log(countsToCall);
     const data = yield call(fetchData, countsToCall);
 
     yield put(receiveApiData(data));
-    yield put(onReqCountUp());
   } catch (e) {
     console.log(e);
   }
 }
 
 function* OnNextPageAsync() {
-  yield put({ type: GO_NEXT_PAGE });
-
   const stateAfter = yield select();
   console.log("Saga - after fire reducer func");
   console.log(stateAfter);
@@ -52,10 +48,13 @@ function* OnNextPageAsync() {
 
   if (paginationReducer === cacheReducer) {
     console.log("the end of page cached, pulling more");
+
+    yield put({ type: UPDATE_CACHE_INDEX });
     yield getApiData();
     console.log("5 triggered and get api finished");
-    yield put(updateNewIndexToCache(paginationReducer + maxCachePages));
   }
+
+  yield put({ type: GO_NEXT_PAGE });
 }
 
 function* watchAPIRequest() {
@@ -63,7 +62,7 @@ function* watchAPIRequest() {
 }
 
 function* watchOnNextPageAsync() {
-  yield takeLatest(REQUEST_NEXT_PAGE, OnNextPageAsync);
+  yield takeEvery(REQUEST_NEXT_PAGE, OnNextPageAsync);
 }
 
 export default function* rootSaga() {

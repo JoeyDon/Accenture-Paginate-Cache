@@ -7,8 +7,6 @@ export const GO_NEXT_PAGE = "GO_NEXT_PAGE";
 export const PREVIOUS_PAGE = "PREVIOUS_PAGE";
 export const UPDATE_CACHE_INDEX = "UPDATE_CACHE_INDEX";
 
-export const REQ_COUNT_UP = "REQ_COUNT_UP";
-
 // export const requestApiData = () => ({ type: REQUEST_API_DATA });
 export const requestApiData = () => {
   console.log("Process - Action");
@@ -26,10 +24,6 @@ export const onNextPage = currentPageIndex => {
 export const onPreviousPage = () => {
   console.log("previous in action");
   return { type: PREVIOUS_PAGE };
-};
-
-export const onReqCountUp = () => {
-  return { type: REQ_COUNT_UP };
 };
 
 export const updateNewIndexToCache = index => {
