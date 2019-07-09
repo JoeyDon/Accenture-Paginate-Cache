@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import { requestApiData, onNextPage, onPreviousPage } from "./actions";
 
+import LoadingCircle from "./components/loading/LoadingCircle";
+import LoadingLinear from "./components/loading/LoadingLinear";
 import Cards from "./components/cards/Cards";
 import Pagination from "./components/pagination/Pagination";
 import { pageSize } from "./settings/settings";
@@ -15,11 +17,18 @@ class Home extends React.Component {
   }
 
   render() {
-    const { data, currentPage, onNextPage, onPreviousPage } = this.props;
-    //console.log(this.props)
-    return data.length ? (
+    const {
+      data,
+      currentPage,
+      onNextPage,
+      onPreviousPage,
+      cachePages
+    } = this.props;
+    console.log(currentPage);
+    return data.length > (currentPage - 1) * pageSize ? (
       <React.Fragment>
-        <Cards data={paginatify(data, currentPage, pageSize)} />{" "}
+        {currentPage === cachePages && <LoadingLinear />}
+        <Cards data={paginatify(data, currentPage, pageSize)} />
         <Pagination
           currentPage={currentPage}
           onNextPage={onNextPage}
@@ -27,7 +36,7 @@ class Home extends React.Component {
         />
       </React.Fragment>
     ) : (
-      <h1>loading...</h1>
+      <LoadingCircle />
     );
   }
 }
