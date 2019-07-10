@@ -7,13 +7,11 @@ import Pagination from "../pagination/Pagination"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    padding:'5vw 10vw',
+
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  }
+
 }));
 
 export default function CenteredGrid(props) {
@@ -25,7 +23,7 @@ export default function CenteredGrid(props) {
       
       <Grid container spacing={3}>
         {data.map(item => (
-          <Grid item xs={6} md={3}>
+          <Grid item xs={12} sm={6} lg={3}>
             <Card data={item} />
           </Grid>
         ))}

@@ -5,11 +5,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CardDetails from "./CardDetails" 
+import CardDetails from "./CardDetails"
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275
+    minWidth: 275,
+    height:230,
   },
   bullet: {
     display: "inline-block",
@@ -19,8 +21,9 @@ const useStyles = makeStyles({
   title: {
     fontSize: 14
   },
-  pos: {
-    marginBottom: 12
+  subtitle: {
+    fontSize:14,
+    marginBottom:5 
   }
 });
 
@@ -30,35 +33,34 @@ export default function SimpleCard(props) {
   const classes = useStyles();
 
 
-  const { data } = props;
-
+  const { coreData } = props.data;
+  const {data } =props;
   return (
-    <Card className={classes.card}>
-      
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          New
-        </Typography>
-        <Typography variant="h5" component="h2">
-          {data.coreData.number}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Application: {data.coreData.application}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Assignee: {data.coreData.assignee}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {data.coreData.Description} {data.coreData.shortDescription}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <CardDetails data={data}/>
-      </CardActions>
-    </Card>
+      <Card className={classes.card}>
+        <CardContent>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              New
+            </Typography>
+            <Typography variant="h5" component="h2">
+              {coreData.number}
+            </Typography>
+            <Typography className={classes.subtitle} color="textSecondary">
+              Application: {coreData.application || 'N/A'}<br/>
+              Assignee: {coreData.assignee || 'N/A'}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {coreData.Description} {coreData.shortDescription}
+            </Typography>
+          </CardContent>
+
+          <CardActions>
+            <CardDetails data={data}/>
+          </CardActions>
+      </Card>
+
   );
 }

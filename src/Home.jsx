@@ -25,10 +25,13 @@ class Home extends React.Component {
       cachePages, lastpageIndex
     } = this.props;
     console.log(currentPage);
-    return data.length > (currentPage - 1) * pageSize ? (
+    return data.length > (currentPage - 1) * pageSize ? 
+    (
       <React.Fragment>
         {currentPage === cachePages && <LoadingLinear />}
+        
         <Cards data={paginatify(data, currentPage, pageSize)} />
+
         <Pagination
           lastpageIndex={lastpageIndex}
           currentPage={currentPage}
@@ -36,7 +39,8 @@ class Home extends React.Component {
           onPreviousPage={onPreviousPage}
         />
       </React.Fragment>
-    ) : (
+    ) : 
+    (
       <LoadingCircle />
     );
   }

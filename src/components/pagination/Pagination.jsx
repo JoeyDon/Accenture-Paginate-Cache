@@ -3,22 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 
+import Typography from '@material-ui/core/Typography';
 import Snackbar from '../snackbar/snackbar'
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        height: 140,
-        width: 100,
-    },
-
     close: {
         padding: theme.spacing(0.5),
     },
+    spanMargin:{
+        fontSize:18,
+        marginTop:5
+    }
 }));
 
 export default function SpacingGrid(props) {
@@ -29,7 +24,7 @@ export default function SpacingGrid(props) {
     const { currentPage, onNextPage, onPreviousPage, lastpageIndex } = props;
 
     return (
-        <Grid container className={classes.root} spacing={2}>
+        <Grid container spacing={5}>
             <Grid item xs={12}>
                 <Grid container justify="center" spacing={spacing}>
                     
@@ -37,11 +32,10 @@ export default function SpacingGrid(props) {
                         <Button onClick={onPreviousPage}>Back</Button>
                     </Grid>
                     
-                    <Grid item>
-                        Page {currentPage} of {lastpageIndex}
+                    <Grid item className={classes.spanMargin}>
+                        <span >Page {currentPage} of {lastpageIndex}</span>
                     </Grid>
 
-                   
                     <Grid item>
                         <Button onClick={onNextPage}>Next</Button>
                     </Grid>

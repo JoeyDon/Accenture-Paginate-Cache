@@ -2,26 +2,33 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
-const useStyles = makeStyles({
+const useStyles = makeStyles( theme => ({
     list: {
-        width: 250,
+        width: '40vw',
     },
-    fullList: {
-        width: 'auto',
+    root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
     },
-});
+    inline: {
+        display: 'inline',
+    },
+    font:{
+        fontSize:'30px'
+    },
+    gridMargin:{
+        margin:'20px'
+    }
+}));
 
 export default function TemporaryDrawer(props) {
-    const { data } = props;
-    console.log(data)
+    const { serviceData } = props.data;
+    const { coreData } = props.data;
+
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -29,6 +36,9 @@ export default function TemporaryDrawer(props) {
         bottom: false,
         right: false,
     });
+
+    const coreDataKeys = ['assignee',  'shortDescription', 'application']
+    const serviceDataKeys = ['made_sla', 'upon_reject','opened_by','priority','activity_due','approval']
 
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -45,23 +55,35 @@ export default function TemporaryDrawer(props) {
             onClick={toggleDrawer(side, false)}
             onKeyDown={toggleDrawer(side, false)}
         >
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
+            <Grid container spacing={2} className={classes.gridMargin}>
+                <Grid item xs={12}>
+                    <Typography className={classes.font}>{coreData.number}</Typography>
+                </Grid>
+                {coreDataKeys.map(key => (
+                    <React.Fragment key={key}>
+                        <Grid item xs={12} sm={4} md={3} lg={2}>
+                            <b>{key}</b>
+                        </Grid>
+                        <Grid item xs={12} sm={8} md={9} lg={10}>
+                            {coreData[key] || 'N/A'}
+                            <Divider />
+                        </Grid>
+                    </React.Fragment>
                 ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
+
+                {serviceDataKeys.map(key=> (
+                    <React.Fragment key={key}>
+                        <Grid item xs={12} sm={4} md={3} lg={2}>
+                            <b>{key}</b>
+                        </Grid>
+                        <Grid item xs={12} sm={8} md={9} lg={10}>
+                            {serviceData[key] || 'N/A'}
+                        <Divider />
+                        </Grid>
+                    </React.Fragment>
                 ))}
-            </List>
+            </Grid>
+           
         </div>
     );
 
