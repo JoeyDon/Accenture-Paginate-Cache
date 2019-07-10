@@ -3,16 +3,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "./Card";
 
-const useStyles = makeStyles(theme => ({
+/* Components Family Tree:
+
+            => LoadingLinear
+APP => Home => Cards => Card => CardDetail
+            => Pagination
+            => LoadingCircle
+*/
+const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
     padding: "5vw 10vw"
   }
-}));
+});
 
-export default function CenteredGrid(props) {
+export default function CenteredCardsGrid(props) {
   const classes = useStyles();
-  const { data } = props;
+  const { data } = props; // data.length is 12. (In this case)
 
   return (
     <div className={classes.root}>

@@ -5,39 +5,41 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
+
+/* Components Family Tree:
+
+            => LoadingLinear
+APP => Home => Cards => Card => CardDetail
+            => Pagination
+            => LoadingCircle
+*/
+
 const useStyles = makeStyles(theme => ({
   list: {
     width: "40vw"
   },
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  },
-  inline: {
-    display: "inline"
-  },
-  font: {
+  ticketNumberSize: {
     fontSize: "30px"
   },
-  gridMargin: {
+  ticketNumberMargin: {
     margin: "20px"
+  },
+  buttonMarginTop: {
+    marginTop: "20px"
   }
 }));
 
-export default function TemporaryDrawer(props) {
-  const { serviceData } = props.data;
-  const { coreData } = props.data;
+export default function CardDetailsDrawer(props) {
+  const { serviceData } = props.data; // serviceData object
+  const { coreData } = props.data; // coreData object
 
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false
-  });
+  const [state, setState] = React.useState({ right: false });
 
+  // coreData Keys to display in the drawer
   const coreDataKeys = ["assignee", "shortDescription", "application"];
+
+  // serviceData Keys to display in the drawer
   const serviceDataKeys = [
     "made_sla",
     "upon_reject",
@@ -58,17 +60,23 @@ export default function TemporaryDrawer(props) {
     setState({ ...state, [side]: open });
   };
 
-  const sideList = side => (
+  // Format of card details in drawer
+  const cardDrawer = side => (
     <div
       className={classes.list}
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <Grid container spacing={2} className={classes.gridMargin}>
+      {/* Tickets Number */}
+      <Grid container spacing={2} className={classes.ticketNumberMargin}>
         <Grid item xs={12}>
-          <Typography className={classes.font}>{coreData.number}</Typography>
+          <Typography className={classes.ticketNumberSize}>
+            {coreData.number}
+          </Typography>
         </Grid>
+
+        {/* Core Data key and value */}
         {coreDataKeys.map(key => (
           <React.Fragment key={key}>
             <Grid item sm={12} md={4} lg={3}>
@@ -81,6 +89,7 @@ export default function TemporaryDrawer(props) {
           </React.Fragment>
         ))}
 
+        {/* Service Data key and value */}
         {serviceDataKeys.map(key => (
           <React.Fragment key={key}>
             <Grid item sm={12} md={4} lg={3}>
@@ -98,7 +107,11 @@ export default function TemporaryDrawer(props) {
 
   return (
     <div>
-      <Button size="small" onClick={toggleDrawer("right", true)}>
+      <Button
+        size="small"
+        onClick={toggleDrawer("right", true)}
+        className={classes.buttonMarginTop}
+      >
         Learn More
       </Button>
 
@@ -107,7 +120,7 @@ export default function TemporaryDrawer(props) {
         open={state.right}
         onClose={toggleDrawer("right", false)}
       >
-        {sideList("right")}
+        {cardDrawer("right")}
       </Drawer>
     </div>
   );

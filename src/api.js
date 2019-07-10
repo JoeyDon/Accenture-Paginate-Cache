@@ -2,6 +2,7 @@ import { API_TOKEN } from "./settings/settings";
 
 export const fetchData = async countsToFetch => {
   try {
+    // ${countsToFetch} is calculated in getApiData() in saga.js
     const url = `https://dh-atratadev.atrmywizard360.com/atr-gateway/ticket-management/api/v1/tickets?
     ticketType=incident&sortDirection=DESC&page=0&perPage=${countsToFetch}`;
 
@@ -13,11 +14,12 @@ export const fetchData = async countsToFetch => {
         Accept: "application/json"
       }
     });
-    //const response = await fetch("https://randomuser.me/api");
-    const data = await response.json();
 
+    const data = await response.json();
     const headers = await response.headers.get("X-Total-Count");
-    console.log(headers);
+    console.log(`header.X-Total-Count = ${headers}`);
+
+    // Push headers to data[0]
     return [headers, ...data];
   } catch (e) {
     console.log(e);

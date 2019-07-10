@@ -1,7 +1,16 @@
 import React from "react";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-export default function LinearIndeterminate() {
+/* Components Family Tree:
+
+            => LoadingLinear
+APP => Home => Cards => Card => CardDetail
+            => Pagination
+            => LoadingCircle
+*/
+
+// This will appear when cache more in the saga.
+export default function LinearLoading() {
   return (
     <div>
       <LinearProgress />

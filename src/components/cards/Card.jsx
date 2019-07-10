@@ -6,15 +6,18 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardDetails from "./CardDetails";
 
+/* Components Family Tree:
+
+            => LoadingLinear
+APP => Home => Cards => Card => CardDetail
+            => Pagination
+            => LoadingCircle
+*/
+
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
     height: 230
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
   },
   title: {
     fontSize: 14
@@ -25,11 +28,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SimpleCard(props) {
+export default function SingleCard(props) {
   const classes = useStyles();
 
   const { coreData } = props.data;
   const { data } = props;
+
   return (
     <Card className={classes.card}>
       <CardContent>

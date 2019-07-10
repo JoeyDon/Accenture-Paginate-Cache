@@ -2,7 +2,16 @@ import React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 
-export default function CircularIndeterminate() {
+/* Components Family Tree:
+
+            => LoadingLinear
+APP => Home => Cards => Card => CardDetail
+            => Pagination
+            => LoadingCircle
+*/
+
+// This will appear when the current page is not cached yet(User click too fast).
+export default function CircularLoading() {
   return (
     <div>
       <Grid
