@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 
 import store from "./store";
-import Home from "./Home.jsx";
+import Home from "../src/components/home/Home";
 
-export default () =>
+export default () => (
   <Provider store={store}>
     <Home />
-  </Provider>;
+  </Provider>
+);

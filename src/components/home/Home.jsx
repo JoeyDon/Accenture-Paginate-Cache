@@ -2,13 +2,13 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { requestApiData, onNextPage, onPreviousPage } from "./actions";
+import { requestApiData, onNextPage, onPreviousPage } from "../../actions";
 
-import LoadingCircle from "./components/loading/LoadingCircle";
-import LoadingLinear from "./components/loading/LoadingLinear";
-import Cards from "./components/cards/Cards";
-import Pagination from "./components/pagination/Pagination";
-import { pageSize } from "./settings/settings";
+import LoadingCircle from "../loading/LoadingCircle";
+import LoadingLinear from "../loading/LoadingLinear";
+import Cards from "../cards/Cards";
+import Pagination from "../pagination/Pagination";
+import { pageSize } from "../../settings/settings";
 
 class Home extends React.Component {
   componentDidMount() {
