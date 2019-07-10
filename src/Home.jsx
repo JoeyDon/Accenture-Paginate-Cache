@@ -12,7 +12,6 @@ import { pageSize } from "./settings/settings";
 
 class Home extends React.Component {
   componentDidMount() {
-    //console.log("Process - componentDidMount");
     this.props.requestApiData();
   }
 
@@ -22,14 +21,15 @@ class Home extends React.Component {
       currentPage,
       onNextPage,
       onPreviousPage,
-      cachePages, lastpageIndex
+      cachePages,
+      lastpageIndex
     } = this.props;
+
     console.log(currentPage);
-    return data.length > (currentPage - 1) * pageSize ? 
-    (
+    return data.length > (currentPage - 1) * pageSize ? (
       <React.Fragment>
         {currentPage === cachePages && <LoadingLinear />}
-        
+
         <Cards data={paginatify(data, currentPage, pageSize)} />
 
         <Pagination
@@ -39,8 +39,7 @@ class Home extends React.Component {
           onPreviousPage={onPreviousPage}
         />
       </React.Fragment>
-    ) : 
-    (
+    ) : (
       <LoadingCircle />
     );
   }
@@ -58,7 +57,7 @@ const mapStateToProps = state => {
     data: state.dataReducer,
     currentPage: state.paginationReducer,
     cachePages: state.cacheReducer,
-    lastpageIndex : state.lastpageReducer
+    lastpageIndex: state.lastpageReducer
   };
 };
 
