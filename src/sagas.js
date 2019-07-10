@@ -9,6 +9,7 @@ import {
 import {
   REQUEST_API_DATA,
   receiveApiData,
+  updateLastItemIndex,
   REQUEST_NEXT_PAGE,
   GO_NEXT_PAGE,
   UPDATE_CACHE_INDEX
@@ -25,7 +26,10 @@ function* getApiData() {
   try {
     const numbersToGrab = initialCachePages * pageSize;
     const data = yield call(fetchData, numbersToGrab);
-    yield put(receiveApiData(data));
+
+    yield put(updateLastItemIndex(data[0]))
+    yield put(receiveApiData(data.slice(1)));
+    
   } catch (e) {
     console.log(e);
   }
@@ -36,7 +40,9 @@ function* getMoreData() {
     const state = yield select();
     const numbersToGrab = (state.cacheReducer + maxCachePages) * pageSize;
     const data = yield call(fetchData, numbersToGrab);
-    yield put(receiveApiData(data));
+
+    yield put(updateLastItemIndex(data[0]))
+    yield put(receiveApiData(data.slice(1)));
   } catch (e) {
     console.log(e);
   }

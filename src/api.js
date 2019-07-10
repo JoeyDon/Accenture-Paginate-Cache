@@ -15,8 +15,10 @@ export const fetchData = async countsToFetch => {
     });
     //const response = await fetch("https://randomuser.me/api");
     const data = await response.json();
-
-    return data;
+    
+    const headers = await response.headers.get('X-Total-Count')
+    console.log(headers)
+    return [headers, ...data];
   } catch (e) {
     console.log(e);
   }

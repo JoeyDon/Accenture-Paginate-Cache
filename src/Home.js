@@ -22,7 +22,7 @@ class Home extends React.Component {
       currentPage,
       onNextPage,
       onPreviousPage,
-      cachePages
+      cachePages, lastpageIndex
     } = this.props;
     console.log(currentPage);
     return data.length > (currentPage - 1) * pageSize ? (
@@ -30,6 +30,7 @@ class Home extends React.Component {
         {currentPage === cachePages && <LoadingLinear />}
         <Cards data={paginatify(data, currentPage, pageSize)} />
         <Pagination
+          lastpageIndex={lastpageIndex}
           currentPage={currentPage}
           onNextPage={onNextPage}
           onPreviousPage={onPreviousPage}
@@ -52,7 +53,8 @@ const mapStateToProps = state => {
   return {
     data: state.dataReducer,
     currentPage: state.paginationReducer,
-    cachePages: state.cacheReducer
+    cachePages: state.cacheReducer,
+    lastpageIndex : state.lastpageReducer
   };
 };
 
