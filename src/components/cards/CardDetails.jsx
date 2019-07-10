@@ -12,11 +12,16 @@ import MailIcon from '@material-ui/icons/Mail';
 
 const useStyles = makeStyles({
     list: {
-        width: '50vw',
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
     },
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props) {
+    const { data } = props;
+    console.log(data)
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -49,12 +54,21 @@ export default function TemporaryDrawer() {
                 ))}
             </List>
             <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
         </div>
     );
 
     return (
         <div>
-            <Button onClick={toggleDrawer('right', true)}>Open Right</Button>
+            <Button size="small" onClick={toggleDrawer('right', true)}>Learn More</Button>
+
             <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
                 {sideList('right')}
             </Drawer>

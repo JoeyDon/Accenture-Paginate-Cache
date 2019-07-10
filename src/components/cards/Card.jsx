@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CardDetail from "./CardDetail" 
+import CardDetails from "./CardDetails" 
 
 const useStyles = makeStyles({
   card: {
@@ -24,15 +24,17 @@ const useStyles = makeStyles({
   }
 });
 
+
+
 export default function SimpleCard(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+
 
   const { data } = props;
 
   return (
     <Card className={classes.card}>
-      <CardDetail />
+      
       <CardContent>
         <Typography
           className={classes.title}
@@ -51,11 +53,11 @@ export default function SimpleCard(props) {
           Assignee: {data.coreData.assignee}
         </Typography>
         <Typography variant="body2" component="p">
-          {data.coreData.shortDescription}
+          {data.coreData.Description} {data.coreData.shortDescription}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <CardDetails data={data}/>
       </CardActions>
     </Card>
   );
