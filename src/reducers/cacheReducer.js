@@ -1,10 +1,10 @@
 import { UPDATE_CACHE_INDEX } from "../actions";
-import { initialCachePages, maxCachePages } from "../settings/settings";
+import { INITIAL_CACHE_PAGES, MAX_CACHE_PAGES } from "../settings/settings";
 
-export default (state = initialCachePages, { type }) => {
+export default (state = INITIAL_CACHE_PAGES, { type }) => {
   switch (type) {
     case UPDATE_CACHE_INDEX:
-      return state + maxCachePages;
+      return state + MAX_CACHE_PAGES;
     default:
       return state;
   }

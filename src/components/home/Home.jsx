@@ -8,7 +8,7 @@ import LoadingCircle from "../loading/LoadingCircle";
 import LoadingLinear from "../loading/LoadingLinear";
 import Cards from "../cards/Cards";
 import Pagination from "../pagination/Pagination";
-import { pageSize } from "../../settings/settings";
+import { PAGE_SIZE } from "../../settings/settings";
 
 class Home extends React.Component {
   componentDidMount() {
@@ -26,11 +26,11 @@ class Home extends React.Component {
     } = this.props;
 
     console.log(currentPage);
-    return data.length > (currentPage - 1) * pageSize ? (
+    return data.length > (currentPage - 1) * PAGE_SIZE ? (
       <React.Fragment>
         {currentPage === cachePages && <LoadingLinear />}
 
-        <Cards data={paginatify(data, currentPage, pageSize)} />
+        <Cards data={paginatify(data, currentPage, PAGE_SIZE)} />
 
         <Pagination
           lastpageIndex={lastpageIndex}
