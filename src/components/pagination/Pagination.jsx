@@ -28,7 +28,7 @@ export default function SpacingGrid(props) {
   const { currentPage, onNextPage, onPreviousPage, lastpageIndex } = props;
 
   return (
-    <Grid container spacing={5}>
+    <Grid container spacing={5} data-test="component-pagination">
       <Grid item xs={12}>
         <Grid container justify="center" spacing={spacing}>
           {currentPage > 1 && (
@@ -45,7 +45,9 @@ export default function SpacingGrid(props) {
 
           {currentPage < lastpageIndex && (
             <Grid item>
-              <Button onClick={onNextPage}>Next</Button>
+              <Button onClick={onNextPage} data-test="next-button">
+                Next
+              </Button>
             </Grid>
           )}
         </Grid>
