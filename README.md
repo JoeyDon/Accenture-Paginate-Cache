@@ -1,3 +1,4 @@
+
 ## [Paginate Cache - Material React Redux Saga Template](https://www.linkedin.com/in/joey-dong-032b9013a/) [![sds](https://img.shields.io/static/v1.svg?label=Linkedin&message=JoeyDon&color=blue)](https://www.linkedin.com/in/joey-dong-032b9013a/)
 
 ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues](https://img.shields.io/github/issues/devias-io/react-material-dashboard.svg)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/devias-io/react-material-dashboard.svg?maxAge=2592000)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aissue+is%3Aclosed) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/BSHaUGR)
@@ -9,7 +10,7 @@
 ## Table of Contents
 
 - [Quick Start](#quick-start)
-- [Documentation](#documentation)
+- [Implementation](#implementation)
 - [File Structure](#file-structure)
 - [Resources](#resources)
 - [Reporting Issues](#reporting-issues)
@@ -30,7 +31,7 @@
 - Views are on: 
 `localhost:3000`
 
-## Documentation
+## Implementation
 
 The documentation for the React Material Kit is can be found [here](https://material-ui.com?ref=devias-io).
 
@@ -53,12 +54,14 @@ Accenture-Paginate-Cache
 	│	│	├── CardDetails.jsx
 	│	│	└── Cards.jsx
 	│	├── home
+	│	│	├── Home.test.js
 	│	│	└── Home.jsx	
 	│	├── loading
 	│	│	├── LoadingCircle.jsx
 	│	│	└── LoadingLinear.jsx
 	│	├── pagination
 	│	│	└── Pagination.jsx	
+	│	├── App.test.js
 	│	└── App.jsx
 	├── reducers
 	│	├── cacheReducer.js
@@ -66,9 +69,10 @@ Accenture-Paginate-Cache
 	│	├── index.js	
 	│	├── lastpageReducer.js	
 	│	└── paginationReducer.js	
-	├── settings
+	├── settings	
 	│	└── settings.js
 	├── utils
+	│	├── testUtils.js
 	│	└── paginate.js
 	├── action.js
 	├── api.js
@@ -94,3 +98,30 @@ Accenture-Paginate-Cache
 
 - Email me: Joey.don0905@gmail.com
 - [Check me out on Linkedin](https://www.linkedin.com/in/joey-dong-032b9013a/)
+
+
+## UML diagrams
+
+You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
+
+```mermaid
+sequenceDiagram
+Alice ->> Bob: Hello Bob, how are you?
+Bob-->>John: How about you John?
+Bob--x Alice: I am good thanks!
+Bob-x John: I am good thanks!
+Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+
+Bob-->Alice: Checking with John...
+Alice->John: Yes... John, how are you?
+```
+
+And this will produce a flow chart:
+
+```mermaid
+graph LR
+A[Square Rect] -- Link text --> B((Circle))
+A --> C(Round Rect)
+B --> D{Rhombus}
+C --> D
+```
