@@ -1,22 +1,22 @@
 
 ## [Paginate Cache - Material React Redux Saga Template](https://www.linkedin.com/in/joey-dong-032b9013a/) [![sds](https://img.shields.io/static/v1.svg?label=Linkedin&message=JoeyDon&color=blue)](https://www.linkedin.com/in/joey-dong-032b9013a/)
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues](https://img.shields.io/github/issues/devias-io/react-material-dashboard.svg)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/devias-io/react-material-dashboard.svg?maxAge=2592000)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aissue+is%3Aclosed) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/BSHaUGR)
+![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues](https://img.shields.io/github/issues/JoeyDon/Accenture-Paginate-Cache.svg)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/JoeyDon/Accenture-Paginate-Cache.svg?maxAge=2592000)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aissue+is%3Aclosed) [
 
-![React Material Dashboard](https://s3.eu-west-2.amazonaws.com/devias/products/react-material-dashboard/react-material-free.png)
+![Resolution 1920 x 1080](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/responsiveExample/1920.1080.PNG?raw=true)
 
-> Free React, Redux with Redux-Saga template made with [Material UI's](https://material-ui.com/?ref=devias-io) components, [React](https://reactjs.org/?ref=devias-io), [Redex](https://redux.js.org/introduction/getting-started), and  [Redex-Saga](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html) to boost your app development process! Example API feteching, interaction between React Component and Redux are implemented. Rich comments throught the template will explain more details and intentions.
+> Free React, Redux with Redux-Saga template made with [Material UI's](https://material-ui.com/?ref=devias-io) components, Using [React](https://reactjs.org/?ref=devias-io), [Redex](https://redux.js.org/introduction/getting-started), and  [Redex-Saga](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html) to boost your app development process! Example API feteching, interactions between React Component and Redux are implemented. Rich comments(JSDoc) throught the template will explain more details and intentions.
 
-![Alt text]((responsiveExample/IPAD.PNG) "Optional title")
 ## Table of Contents
 
 - [Quick Start](#quick-start)
 - [Implementation](#implementation)
 - [File Structure](#file-structure)
+- [Responsive Layout](#responsive-layout)
 - [Resources](#resources)
 - [Reporting Issues](#reporting-issues)
 - [Licensing](#licensing)
-- [Contact Us](#contact-us)
+- [Contact Me](#contact-me)
 
 ## Quick start
 
@@ -27,14 +27,20 @@
 `npm install` or `yarn`
 
 - Start the server: 
-`npm run start` or `yarn start`
+`npm start` or `yarn start`
 
-- Views are on: 
+- Run the test: ( Jest with Enzyme) 
+`npm test` or `yarn test`
+
+- Build the package: 
+`npm build` or `yarn build`
+
+- Views are on(default): 
 `localhost:3000`
 
 ## Implementation
 
-The documentation for the React Material Kit is can be found [here](https://material-ui.com?ref=devias-io).
+[TODO]
 
 ## File Structure
 
@@ -82,10 +88,29 @@ Accenture-Paginate-Cache
 	├── saga.js
 	└── store.js
 ```
+## Responsive Layout
+1920 x 1080 (16:9)
+21.5'' monitor / 23'' monitor / 1080p TV
+![Resolution 1920 x 1080](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/responsiveExample/1920.1080.PNG?raw=true)
+ 
+1366 x 768 (16:9)
+14'' Notebook / 15.6'' Laptop / 18.5'' monitor
+![Resolution 1366 x 768](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/responsiveExample/1366.768.PNG?raw=true) 
 
+768 x 1024 (3:4)
+IPAD / Tablet
+![Resolution IPAD](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/responsiveExample/IPAD.PNG?raw=true)
+
+ 375 x 667 (9:19)
+ IPHONE 6/7/8 or Similar mobile phones
+![Resolution 1366 x 768](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/responsiveExample/IPHONE%20678.PNG?raw=true)
+
+ 
 ## Resources
 
 - Material-UI, the world's most popular React UI framework. : <https://material-ui.com/>
+- Udamy, Test Driven Development course on [React Testing with Jest and Enzyme](https://www.udemy.com/gift/react-testing-with-jest-and-enzyme/?couponCode=LEARNTODAY) to follow the best practices of testing.
+- Docker, Container Platform : [Learn more](https://www.docker.com/)
 
 ## Reporting Issues:
 
@@ -93,36 +118,10 @@ Accenture-Paginate-Cache
 
 ## Design Files
 
-- Licensed under MIT (https://github.com/devias-io/react-material-dashboard/blob/master/LICENSE.md)
+- Licensed under MIT ([https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/LICENSE.md](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/LICENSE.md))
 
 ## Contact Us
 
 - Email me: Joey.don0905@gmail.com
 - [Check me out on Linkedin](https://www.linkedin.com/in/joey-dong-032b9013a/)
 
-
-## UML diagrams
-
-You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
-
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
-```
-
-And this will produce a flow chart:
-
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```
