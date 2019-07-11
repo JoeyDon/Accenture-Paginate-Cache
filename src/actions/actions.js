@@ -17,11 +17,21 @@ export const onNextPage = () => ({ type: REQUEST_NEXT_PAGE });
 
 export const onPreviousPage = () => ({ type: GO_PREVIOUS_PAGE });
 
+/**
+ * @function updateNewIndexToCache
+ * @param {int} index - Total cached pages.
+ * @returns {object} - Trigger reducer.
+ */
 export const updateNewIndexToCache = index => ({
   type: UPDATE_CACHE_INDEX,
   index
 });
 
+/**
+ * @function updateLastItemIndex
+ * @param {int} index - X-Total-Count from the header
+ * @returns {object} - Trigger reducer.
+ */
 export const updateLastItemIndex = index => ({
   type: UPDATE_LASTITEM_INDEX,
   index
