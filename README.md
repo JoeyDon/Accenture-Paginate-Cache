@@ -7,6 +7,7 @@
 
 > Free React, Redux with Redux-Saga template made with [Material UI's](https://material-ui.com/?ref=devias-io) components, [React](https://reactjs.org/?ref=devias-io), [Redex](https://redux.js.org/introduction/getting-started), and  [Redex-Saga](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html) to boost your app development process! Example API feteching, interaction between React Component and Redux are implemented. Rich comments throught the template will explain more details and intentions.
 
+![Alt text]((responsiveExample/IPAD.PNG) "Optional title")
 ## Table of Contents
 
 - [Quick Start](#quick-start)
