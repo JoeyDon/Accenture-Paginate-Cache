@@ -22,6 +22,10 @@ APP => Home => Cards => Card => CardDetail
 */
 
 class Home extends React.Component {
+  /**
+   * @method componentDidMount
+   * @returns {undefined}
+   */
   componentDidMount() {
     // Initial API call
     this.props.requestApiData();

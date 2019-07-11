@@ -8,7 +8,6 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 /**
  * @function setup
  * @param {object} props - Component props specific to this setup
- * @param {object} state  - Initial state for setup
  * @return {ShallowWrapper}
  */
 const setup = (props = {}) => {
