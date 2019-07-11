@@ -5,7 +5,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
-
+import useWindowDimensions from "../../utils/getScreenSize";
+import { phoneViewportWidth } from "../../settings/settings";
 /* Components Family Tree:
 
             => LoadingLinear
@@ -14,26 +15,40 @@ APP => Home => Cards => Card => CardDetail
             => LoadingCircle
 */
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   list: {
-    width: "40vw"
+    width: "40vw",
+    margin: "20px"
   },
   ticketNumberSize: {
     fontSize: "30px"
   },
-  ticketNumberMargin: {
-    margin: "20px"
+
+  buttonMarginTop: {
+    marginTop: "20px"
+  }
+});
+
+const usePhoneStyles = makeStyles({
+  list: {
+    width: "70vw",
+    margin: "10px"
+  },
+  ticketNumberSize: {
+    fontSize: "20px"
   },
   buttonMarginTop: {
     marginTop: "20px"
   }
-}));
+});
 
 export default function CardDetailsDrawer(props) {
   const { serviceData } = props.data; // serviceData object
   const { coreData } = props.data; // coreData object
 
-  const classes = useStyles();
+  const { width } = useWindowDimensions();
+  const classes = width < phoneViewportWidth ? usePhoneStyles() : useStyles();
+
   const [state, setState] = React.useState({ right: false });
 
   // coreData Keys to display in the drawer
@@ -62,47 +77,47 @@ export default function CardDetailsDrawer(props) {
 
   // Format of card details in drawer
   const cardDrawer = side => (
-    <div
+    <Grid
+      container
+      spacing={2}
       className={classes.list}
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
       {/* Tickets Number */}
-      <Grid container spacing={2} className={classes.ticketNumberMargin}>
-        <Grid item xs={12}>
-          <Typography className={classes.ticketNumberSize}>
-            {coreData.number}
-          </Typography>
-        </Grid>
-
-        {/* Core Data key and value */}
-        {coreDataKeys.map(key => (
-          <React.Fragment key={key}>
-            <Grid item sm={12} md={4} lg={3}>
-              <b>{key}</b>
-            </Grid>
-            <Grid item sm={12} md={8} lg={9}>
-              {coreData[key] || "N/A"}
-              <Divider />
-            </Grid>
-          </React.Fragment>
-        ))}
-
-        {/* Service Data key and value */}
-        {serviceDataKeys.map(key => (
-          <React.Fragment key={key}>
-            <Grid item sm={12} md={4} lg={3}>
-              <b>{key}</b>
-            </Grid>
-            <Grid item sm={12} md={8} lg={9}>
-              {serviceData[key] || "N/A"}
-              <Divider />
-            </Grid>
-          </React.Fragment>
-        ))}
+      <Grid item xs={12}>
+        <Typography className={classes.ticketNumberSize}>
+          {coreData.number}
+        </Typography>
       </Grid>
-    </div>
+
+      {/* Core Data key and value */}
+      {coreDataKeys.map(key => (
+        <React.Fragment key={key}>
+          <Grid item xs={12} md={4} lg={3}>
+            <b>{key}</b>
+          </Grid>
+          <Grid item xs={12} md={8} lg={9}>
+            {coreData[key] || "N/A"}
+            <Divider />
+          </Grid>
+        </React.Fragment>
+      ))}
+
+      {/* Service Data key and value */}
+      {serviceDataKeys.map(key => (
+        <React.Fragment key={key}>
+          <Grid item xs={12} md={4} lg={3}>
+            <b>{key}</b>
+          </Grid>
+          <Grid item xs={12} md={8} lg={9}>
+            {serviceData[key] || "N/A"}
+            <Divider />
+          </Grid>
+        </React.Fragment>
+      ))}
+    </Grid>
   );
 
   return (
