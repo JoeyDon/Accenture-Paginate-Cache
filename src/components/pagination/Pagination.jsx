@@ -33,13 +33,17 @@ export default function SpacingGrid(props) {
         <Grid container justify="center" spacing={spacing}>
           {currentPage > 1 && (
             <Grid item>
-              <Button onClick={onPreviousPage}>Back</Button>
+              <Button onClick={onPreviousPage} data-test="back-button">
+                Back
+              </Button>
             </Grid>
           )}
 
           <Grid item className={classes.spanMargin}>
-            <span>
-              Page {currentPage} of {lastpageIndex}
+            <span data-test="page-display">
+              Page{" "}
+              <span data-test="currentPageIndex-display">{currentPage}</span> of{" "}
+              {lastpageIndex}
             </span>
           </Grid>
 

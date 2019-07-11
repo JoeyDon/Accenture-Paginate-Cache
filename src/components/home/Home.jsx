@@ -6,7 +6,11 @@ import LoadingLinear from "../loading/LoadingLinear";
 import Cards from "../cards/Cards";
 import Pagination from "../pagination/Pagination";
 import { PAGE_SIZE } from "../../settings/settings";
-import { requestApiData, onNextPage, onPreviousPage } from "../../actions";
+import {
+  requestApiData,
+  onNextPage,
+  onPreviousPage
+} from "../../actions/actions";
 import { paginatify } from "../../utils/paginate";
 
 /* Components Family Tree:

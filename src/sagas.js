@@ -13,7 +13,7 @@ import {
   REQUEST_NEXT_PAGE,
   GO_NEXT_PAGE,
   UPDATE_CACHE_INDEX
-} from "./actions";
+} from "./actions/actions";
 
 import {
   PAGE_SIZE,

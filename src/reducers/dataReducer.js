@@ -1,4 +1,4 @@
-import { RECEIVE_API_DATA } from "../actions";
+import { RECEIVE_API_DATA } from "../actions/actions";
 
 // This reducer is for ***the whole bunch of cards cached data***
 export default (state = [], { type, data }) => {

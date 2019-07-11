@@ -1,4 +1,4 @@
-import { UPDATE_CACHE_INDEX } from "../actions";
+import { UPDATE_CACHE_INDEX } from "../actions/actions";
 import { INITIAL_CACHE_PAGES, MAX_CACHE_PAGES } from "../settings/settings";
 
 // This reducer is for ***the last index of cached page***

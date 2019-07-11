@@ -13,6 +13,6 @@ APP => Home => Cards => Card => CardDetail
 
 export default () => (
   <Provider store={store}>
-    <Home />
+    <Home data-test="component-home" />
   </Provider>
 );

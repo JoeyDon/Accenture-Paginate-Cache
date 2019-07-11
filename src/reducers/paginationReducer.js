@@ -1,4 +1,4 @@
-import { GO_NEXT_PAGE, GO_PREVIOUS_PAGE } from "../actions";
+import { GO_NEXT_PAGE, GO_PREVIOUS_PAGE } from "../actions/actions";
 
 // This reducer is for ***the current page index***
 export default (state = 1, { type }) => {

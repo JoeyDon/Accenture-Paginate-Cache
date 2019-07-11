@@ -1,4 +1,4 @@
-import { UPDATE_LASTITEM_INDEX } from "../actions";
+import { UPDATE_LASTITEM_INDEX } from "../actions/actions";
 import { PAGE_SIZE } from "../settings/settings";
 
 // This reducer is for ***the last available page index***
