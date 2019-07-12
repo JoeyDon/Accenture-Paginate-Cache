@@ -1,5 +1,6 @@
 
 
+
 ## [Paginate Cache - Material React Redux Saga Template](https://www.linkedin.com/in/joey-dong-032b9013a/) [![sds](https://img.shields.io/static/v1.svg?label=Linkedin&message=JoeyDon&color=blue)](https://www.linkedin.com/in/joey-dong-032b9013a/)
 
 ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues](https://img.shields.io/github/issues/JoeyDon/Accenture-Paginate-Cache.svg)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/JoeyDon/Accenture-Paginate-Cache.svg?maxAge=2592000)](https://github.com/devias-io/react-material-dashboard/issues?q=is%3Aissue+is%3Aclosed) 
@@ -14,6 +15,7 @@
 - [Flow Chart](#flow-chart)
 - [Implementation](#implementation)
 - [File Structure](#file-structure)
+- [Time Distribution](#time-distribution)
 - [Responsive Layout](#responsive-layout)
 - [Resources](#resources)
 - [Reporting Issues](#reporting-issues)
@@ -105,6 +107,36 @@ Accenture-Paginate-Cache
 	├── saga.js
 	└── store.js
 ```
+## Time Distribution
+Total: 30hours.
+1. `Setup: 3 hours` 
+- Git repo
+- ` React + Redux + Saga, and all dependencies` 
+- ` Enzyme , Enzyme-adapter-react-16, Jest-enzyme`
+- ` Postman API test`
+
+2. `Structure Planing: 6 hours` 
+- Design the components tree
+- Design Redux data flow
+- Design fetching cache pattern
+- Draw diagram
+
+3. `Implementing: 12 hours` 
+- Implementing Components, Redux, Action, Saga
+- Implementing fetching algorithsm
+- Testings
+
+4. `CSS Stylying (Responsive): 3 hours` 
+- Responsive to different size of screen
+- Mock the UI similar to the picture in instruction.
+
+5. `Learn Testings and Implement the basics: 3 hours` 
+- A better understanding of Unit tests, Integration tests, End to end test.
+- New mindset : Test Driven Development
+- Implement basic testing
+
+5. `README.md: 3 hours` 
+- Formatted as much concise as possible
 ## Responsive Layout
 1920 x 1080 (16:9)
 21.5'' monitor / 23'' monitor / 1080p TV
@@ -137,7 +169,7 @@ IPAD / Tablet
 
 - Licensed under MIT ([https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/LICENSE.md](https://github.com/JoeyDon/Accenture-Paginate-Cache/blob/master/LICENSE.md))
 
-## Contact Us
+## Contact Me
 
 - Email me: Joey.don0905@gmail.com
 - [Check me out on Linkedin](https://www.linkedin.com/in/joey-dong-032b9013a/)
