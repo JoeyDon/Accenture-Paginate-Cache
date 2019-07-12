@@ -24,7 +24,7 @@ export default function CenteredCardsGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={3}>
         {data.map(item => (
-          <Grid item xs={12} sm={6} xl={3} key={item.coreData.id}>
+          <Grid item xs={12} sm={6} md={4} xl={3} key={item.coreData.id}>
             <Card data={item} />
           </Grid>
         ))}

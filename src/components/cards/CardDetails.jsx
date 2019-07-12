@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import useWindowDimensions from "../../utils/getScreenSize";
-import { phoneViewportWidth } from "../../settings/settings";
+import { PHONE_VIEWPORT_WIDTH } from "../../settings/settings";
 /* Components Family Tree:
 
             => LoadingLinear
@@ -46,8 +46,9 @@ export default function CardDetailsDrawer(props) {
   const { serviceData } = props.data; // serviceData object
   const { coreData } = props.data; // coreData object
 
+  // Get screen width
   const { width } = useWindowDimensions();
-  const classes = width < phoneViewportWidth ? usePhoneStyles() : useStyles();
+  const classes = width < PHONE_VIEWPORT_WIDTH ? usePhoneStyles() : useStyles();
 
   const [state, setState] = React.useState({ right: false });
 

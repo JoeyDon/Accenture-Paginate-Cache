@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SpacingGrid(props) {
+export default function PaginationGrid(props) {
   const [spacing] = React.useState(2);
   const classes = useStyles();
 
