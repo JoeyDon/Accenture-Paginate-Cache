@@ -35,7 +35,7 @@
 `npm test` or `yarn test`
 
 - Build the package: 
-`npm build` or `yarn build`
+`npm run build` or `yarn build`
 
 - Views are on(default): 
 `localhost:3000`
